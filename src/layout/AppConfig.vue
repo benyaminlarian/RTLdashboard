@@ -53,7 +53,8 @@ const applyScale = () => {
         <i class="pi pi-cog"></i>
     </button>
 
-    <Sidebar v-model:visible="visible" v-bind:position="(layoutConfig.rtlActive.value ? 'left' : 'right')" :transitionOptions="'.3s cubic-bezier(0, 0, 0.2, 1)'" class="layout-config-sidebar w-20rem">
+    <Sidebar v-model:visible="visible" v-bind:position="(layoutConfig.rtlActive.value ? 'left' : 'right')" :transitionOptions="'.3s cubic-bezier(0, 0, 0.2, 1)'" class="layout-config-sidebar w-20rem"
+    v-bind:class="(layoutConfig.rtlActive.value) ? 'rtl' : 'ltr'">
         <h5>Scale</h5>
         <div class="flex align-items-center">
             <Button icon="pi pi-minus" type="button" @click="decrementScale()" class="p-button-text p-button-rounded w-2rem h-2rem mr-2" :disabled="layoutConfig.scale.value === scales[0]"></Button>
@@ -294,10 +295,18 @@ const applyScale = () => {
         </div>
 
         <div>
-            <h5>ser to LTR</h5>
+            <h5>ser to RTL</h5>
             <ToggleButton v-model="checked" class="w-8rem" @click="changeRtl()"/>
         </div>
     </Sidebar>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.rtl {
+    direction: rtl;
+}
+
+.ltr {
+    direction: ltr;
+}
+</style>
